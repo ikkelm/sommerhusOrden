@@ -13,7 +13,12 @@ men följande steg kräver Apple Developer-konto och kan inte automatiseras här
 
 ## 2. iCloud-container
 
-Entitlements-filen (`sommerhusOrden/sommerhusOrden.entitlements`) pekar på containern:
+Debug-entitlements (`sommerhusOrden/sommerhusOrden.entitlements`) pekar på
+CloudKits Development-miljö. Release-entitlements
+(`sommerhusOrden/sommerhusOrdenRelease.entitlements`) pekar på Production för
+TestFlight/App Store.
+
+Båda pekar på containern:
 
 ```text
 iCloud.se.mikkelwulff.sommerhusOrden
@@ -30,7 +35,7 @@ i `sommerhusOrden/CloudKit/CloudKitSyncService.swift` och entitlements-filen.
 Recordtyperna (`CottageStay`, `InventoryItem`, `ShoppingListItem`, `CottageSettings`)
 skapas automatiskt i **utvecklingsmiljön** första gången appen sparar data.
 
-Innan App Store-release: gå till [CloudKit Console](https://icloud.developer.apple.com),
+Innan TestFlight/App Store: gå till [CloudKit Console](https://icloud.developer.apple.com),
 välj containern och **deploya schemat från Development till Production**.
 Utan detta steg fungerar synk inte i App Store-versionen.
 

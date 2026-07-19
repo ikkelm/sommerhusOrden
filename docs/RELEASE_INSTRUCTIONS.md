@@ -10,14 +10,16 @@
 ```bash
 # Bygg + tester
 xcodebuild -project sommerhusOrden.xcodeproj -scheme sommerhusOrden \
-  -destination 'platform=iOS Simulator,name=iPhone 16' test
+  -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' test
 
 # Release-bygge (simulator, snabb kontroll)
 xcodebuild -project sommerhusOrden.xcodeproj -scheme sommerhusOrden \
-  -configuration Release -destination 'platform=iOS Simulator,name=iPhone 16' build
+  -configuration Release -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.6' build
 ```
 
-Gå därefter igenom docs/MANUAL_QA_CHECKLIST.md.
+Om den exakta simulatorn saknas, kör `xcodebuild -showdestinations -project
+sommerhusOrden.xcodeproj -scheme sommerhusOrden` och välj en installerad iPhone-
+eller iPad-destination. Gå därefter igenom docs/MANUAL_QA_CHECKLIST.md.
 
 ## Arkivera och ladda upp (Xcode)
 

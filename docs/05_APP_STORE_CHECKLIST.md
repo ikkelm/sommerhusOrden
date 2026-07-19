@@ -10,7 +10,7 @@ Status per 2026-07-19 (fas 6). ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 - [x] Launch screen works (genererad launch screen)
 - [x] No hardcoded secrets
 - [x] No private APIs
-- [x] Privacy manifest included if required (ingen krävs: ingen tracking, inga "required reason"-API:er utöver systemramverk; verifiera vid inlämning om Apple flaggar)
+- [x] Privacy manifest included (`sommerhusOrden/PrivacyInfo.xcprivacy`: ingen tracking, ingen datainsamling, inga deklarerade required-reason-API:er)
 - [x] Works on supported iOS version range (iOS 17+)
 
 ## Product
