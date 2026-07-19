@@ -6,7 +6,7 @@ Status per 2026-07-19 (fas 6). ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 - [x] App builds on current Xcode stable version (Xcode 16.4, verifierat)
 - [x] Bundle identifier chosen (`se.mikkelwulff.sommerhusOrden`)
 - [x] iCloud/CloudKit capability configured (entitlements + kod; team måste väljas, se docs/CLOUDKIT_SETUP.md)
-- [x] App icon added (platshållare — byt gärna mot riktig design före release)
+- [x] App icon added (riktig ikon från logo.png, 1024×1024 utan alpha)
 - [x] Launch screen works (genererad launch screen)
 - [x] No hardcoded secrets
 - [x] No private APIs
