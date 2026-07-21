@@ -33,7 +33,8 @@ Status per 2026-07-21. ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 - [x] Subtitle drafted (docs/APP_STORE_LISTING.md)
 - [x] Description drafted
 - [x] Keywords drafted
-- [x] Screenshots prepared (4 st 6.9" i `screenshots/`, se screenshots/README.md;
+- [x] Screenshots prepared (4 st iPhone 6.9" + 3 st iPad 13" i `screenshots/`.
+      Appen är universell, så båda storlekarna krävs — se screenshots/README.md.
       Inställningar-bilden kräver enhet med iCloud)
 - [ ] Support URL prepared (sida klar i web/support.html — ladda upp)
 - [ ] Privacy policy URL prepared (sida klar i web/integritet.html — ladda upp)

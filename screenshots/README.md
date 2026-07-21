@@ -1,8 +1,12 @@
 # Skärmbilder för App Store
 
-Tagna 2026-07-21 på **iPhone 17 Pro Max-simulator, 1320×2868 px** — Apples
-6.9"-format, vilket är den enda storlek som krävs för en iPhone-only-app.
-App Store Connect skalar ner till mindre format automatiskt.
+Tagna 2026-07-21. Statusfältet är satt till Apples kanoniska 09:41 via
+`simctl status_bar override`.
+
+Appen är universell (`TARGETED_DEVICE_FAMILY = "1,2"`), så App Store Connect
+kräver **två** storlekar: iPhone 6.9" och iPad 13". Båda finns här.
+
+## iPhone — 1320×2868 (iPhone 17 Pro Max, 6.9")
 
 | Fil | Visar | Klar att ladda upp |
 |---|---|---|
@@ -11,6 +15,14 @@ App Store Connect skalar ner till mindre format automatiskt.
 | `03-mat.png` | Förrådet med sökfält, kategorifilter och statusmärken | Ja |
 | `04-inkop.png` | Inköpslistan grupperad per kategori, med avbockade varor | Ja |
 | `05-installningar-EJ-KLAR.png` | Inställningar | **Nej** — se nedan |
+
+## iPad — 2064×2752 (iPad Pro 13", M5)
+
+| Fil | Visar | Klar att ladda upp |
+|---|---|---|
+| `ipad-01-stugan.png` | Hela veckoöversikten, inkl. "Som mest 12 av 10 sängplatser" | Ja |
+| `ipad-02-mat.png` | Hela förrådet i ett svep | Ja |
+| `ipad-03-inkop.png` | Inköpslistan | Ja |
 
 ## Varför bild 5 inte duger
 
@@ -22,7 +34,7 @@ Ta om den på en riktig enhet med iCloud inloggat, antingen på Inställningar-f
 eller — bättre — på systemets delningsvy som öppnas via **Dela med familjen**.
 Det är den bild som säljer appens poäng.
 
-Fyra bilder räcker gott för inlämning; App Store kräver minst en.
+Antalet räcker: App Store kräver minst en bild per storlek, max tio.
 
 ## Ta om bilderna
 
@@ -43,9 +55,13 @@ xcrun simctl terminate "$SIM" se.mikkelwulff.sommerhusOrden
 
 CONTAINER=$(xcrun simctl get_app_container "$SIM" se.mikkelwulff.sommerhusOrden data)
 python3 scripts/seed_screenshot_data.py "$CONTAINER/Library/Application Support/sommerhusOrden/store.json"
+
+xcrun simctl status_bar "$SIM" override --time "9:41" \
+  --batteryState charged --batteryLevel 100 --wifiMode active --wifiBars 3
 xcrun simctl launch "$SIM" se.mikkelwulff.sommerhusOrden
 
 xcrun simctl io "$SIM" screenshot screenshots/01-stugan.png
 ```
 
 Byt flik i simulatorn för hand mellan bilderna och kör `simctl io … screenshot` igen.
+Samma recept för iPad — byt bara ut simulatornamnet mot `iPad Pro 13-inch`.
