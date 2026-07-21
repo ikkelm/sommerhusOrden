@@ -1,6 +1,6 @@
 # Release Candidate Review — sommerhusOrden 1.0
 
-Datum: 2026-07-19. Granskare: Codex (fas 7-genomgång enligt promts/17).
+Datum: 2026-07-19, omverifierad 2026-07-21. Granskare: Codex (fas 7-genomgång enligt promts/17).
 
 ## Status: NOT READY för App Store — READY för enhets-/TestFlight-test
 
@@ -8,9 +8,11 @@ Koden är komplett och verifierad lokalt. Det som återstår är uteslutande ste
 kräver Apple Developer-konto och riktiga iCloud-konton (se "Måste fixas" nedan).
 
 ## 1. Bygge och tester
-- `xcodebuild … test` (iPhone 16-simulator, iOS 18.6): **TEST SUCCEEDED** —
-  8 sviter, 45 testfall, 0 fel.
-- `xcodebuild … -configuration Release build`: **BUILD SUCCEEDED**, 0 varningar i appkod.
+- `xcodebuild … test` (iPhone 17 Pro Max, Xcode 26.6): **TEST SUCCEEDED** —
+  8 sviter, 45 testfall, 0 fel. (Ursprungligen verifierat på Xcode 16.4; inget
+  regredierade vid uppgraderingen.)
+- `xcodebuild … -configuration Release -destination 'generic/platform=iOS' build`:
+  **BUILD SUCCEEDED** med riktig signering, 0 varningar i appkod.
 - Appen installerad och startad i simulator: kör stabilt, ingen krasch,
   iCloud-otillgängligt-läget visas korrekt utan konto.
 
@@ -57,15 +59,27 @@ multi-stuga, roller, recept. Inga TODO/FIXME/HACK i koden.
 - CKSyncEngine-beteende vid kontobyte: hanteras via accountChange-event (signOut
   ger "iCloud behövs"-läge); datat ligger kvar lokalt.
 
-## Måste fixas före TestFlight/App Store
-1. Välj signeringsteam och verifiera CloudKit-synk + delning på riktiga enheter
-   (docs/CLOUDKIT_SETUP.md §1–4).
-2. Deploya CloudKit-schema till Production.
-3. Publicera integritetspolicy- och support-URL; uppdatera listningen.
-4. Ta skärmbilder och fyll i App Store Connect-metadata.
-5. Kör docs/MANUAL_QA_CHECKLIST.md på enhet.
+## Måste fixas före TestFlight
+1. Deploya CloudKit-schema från Development till Production
+   (docs/CLOUDKIT_SETUP.md §3). Kräver att appen kört minst en gång mot ett
+   riktigt iCloud-konto så recordtyperna finns i Development.
+2. Skapa appposten i App Store Connect med bundle-id `se.mikkelwulff.sommerhusOrden`.
+3. Arkivera och ladda upp (docs/RELEASE_INSTRUCTIONS.md).
+
+## Måste fixas före App Store
+4. Verifiera CloudKit-synk + delning på riktiga enheter (docs/CLOUDKIT_SETUP.md §4).
+   Detta är den enda helt oprövade delen av appen.
+5. Publicera integritetspolicy- och support-URL (färdiga sidor i `web/`).
+6. Fyll i App Store Connect-metadata från docs/APP_STORE_LISTING.md och ladda upp
+   skärmbilderna i `screenshots/`.
+7. Kör docs/MANUAL_QA_CHECKLIST.md på enhet.
+
+## Avklarat sedan första granskningen
+- Signeringsteam valt i projektet (`DEVELOPMENT_TEAM = 7SZ4X2N2U7`).
+- Riktig appikon på plats (från logo.png).
+- Release-entitlements pekar på CloudKit Production.
+- `ITSAppUsesNonExemptEncryption = NO` — slipper exportfrågan vid varje uppladdning.
 
 ## Kan vänta
-- Riktig appikon (platshållaren duger för TestFlight).
 - UI för att hantera/avsluta delning (går via systemets iCloud-delning).
 - Lokalisering till fler språk.

@@ -1,11 +1,13 @@
 # App Store Checklist — sommerhusOrden
 
-Status per 2026-07-19 (fas 6). ☐ = kvarstår för Mikkel, ☑ = klart i koden.
+Status per 2026-07-21. ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 
 ## Technical
-- [x] App builds on current Xcode stable version (Xcode 16.4, verifierat)
+- [x] App builds on current Xcode stable version (Xcode 26.6: Release-bygge för enhet
+      lyckas, 45 tester passerar)
 - [x] Bundle identifier chosen (`se.mikkelwulff.sommerhusOrden`)
-- [x] iCloud/CloudKit capability configured (entitlements + kod; team måste väljas, se docs/CLOUDKIT_SETUP.md)
+- [x] Signeringsteam valt i projektet (`DEVELOPMENT_TEAM = 7SZ4X2N2U7`)
+- [x] iCloud/CloudKit capability configured (entitlements + kod, se docs/CLOUDKIT_SETUP.md)
 - [x] App icon added (riktig ikon från logo.png, 1024×1024 utan alpha)
 - [x] Launch screen works (genererad launch screen)
 - [x] No hardcoded secrets
@@ -23,7 +25,7 @@ Status per 2026-07-19 (fas 6). ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 ## Privacy
 - [x] No ads
 - [x] No analytics
-- [x] Privacy policy prepared (docs/PRIVACY_POLICY.md — publicera på URL)
+- [x] Privacy policy prepared (docs/PRIVACY_POLICY.md; färdig sida i web/integritet.html)
 - [ ] App Store privacy answers align with actual data usage (svara "Ingen datainsamling" — utvecklaren samlar inget; data ligger i användarens iCloud)
 
 ## Store listing
@@ -31,9 +33,10 @@ Status per 2026-07-19 (fas 6). ☐ = kvarstår för Mikkel, ☑ = klart i koden.
 - [x] Subtitle drafted (docs/APP_STORE_LISTING.md)
 - [x] Description drafted
 - [x] Keywords drafted
-- [ ] Screenshots prepared (lista i docs/APP_STORE_LISTING.md)
-- [ ] Support URL prepared (platshållare finns — publicera sida)
-- [ ] Privacy policy URL prepared (platshållare finns — publicera sida)
+- [x] Screenshots prepared (4 st 6.9" i `screenshots/`, se screenshots/README.md;
+      Inställningar-bilden kräver enhet med iCloud)
+- [ ] Support URL prepared (sida klar i web/support.html — ladda upp)
+- [ ] Privacy policy URL prepared (sida klar i web/integritet.html — ladda upp)
 
 ## Review risk notes
 - Appen är formulerad generellt: "familjeapp för delat fritidshus", inte bunden till en namngiven familj.

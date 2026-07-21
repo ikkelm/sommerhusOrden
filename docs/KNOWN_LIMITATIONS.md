@@ -4,9 +4,9 @@
 
 ## Kräver verklig miljö (inte verifierat i utvecklingsmiljön)
 - **CloudKit-synk är obeprövad mot riktiga iCloud-konton.** Koden är komplett
-  (CKSyncEngine, delning, konflikthantering) och bygger, men har inte kunnat köras
-  mot iCloud eftersom utvecklingsmiljön saknar signeringsteam och iCloud-inloggning.
-  Måste testas enligt docs/CLOUDKIT_SETUP.md §4 innan TestFlight.
+  (CKSyncEngine, delning, konflikthantering) och bygger signerat, men har inte kunnat
+  köras mot iCloud eftersom simulatorn saknar iCloud-inloggning.
+  Måste testas enligt docs/CLOUDKIT_SETUP.md §4 innan App Store-release.
 - CloudKit-schemat måste deployas till Production manuellt före App Store-release.
 
 ## Medvetna MVP-avgränsningar
@@ -24,7 +24,6 @@
 - Veckoöversikten visar bara veckor som har vistelser (inga tomma veckor).
 - Sökning gäller varunamn, inte anteckningar.
 - Endast svenska; ingen lokalisering till andra språk i 1.0.
-- Appikonen är en platshållare (genererad); byt gärna före release.
 
 ## Tekniska noteringar
 - Lokal lagring är en JSON-fil (Application Support). Robust för familjedata i
